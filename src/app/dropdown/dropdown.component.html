@@ -1,0 +1,17 @@
+<button (click)="toggleDropdown()">+</button>
+
+<ul *ngIf="isOpen">
+  <li *ngFor="let option of options" (click)="selectOption(option)">
+    {{ option.label }}
+  </li>
+</ul>
+
+<div *ngIf="selectedOption?.value === 'table'">
+  <input type="text" [(ngModel)]="inputValue" placeholder="Enter table name">
+  <button (click)="save()">Save</button>
+  <button (click)="cancel()">Cancel</button>
+</div>
+
+<div *ngIf="selectedOption?.value === 'folder'">
+  <button (click)="toggleNestedDropdown()">Nested Plus Button</button>
+</div>

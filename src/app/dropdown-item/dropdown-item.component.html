@@ -1,0 +1,11 @@
+<div *ngIf="level > 0" style="padding-left: 20px;"> <span *ngIf="option && !option.showInput">{{ option.label }}</span>
+    <input type="text" *ngIf="option?.showInput" [(ngModel)]="inputValue" placeholder="Enter table name">
+    <button *ngIf="option?.showInput" (click)="save()">Save</button>
+    <button *ngIf="option?.showInput" (click)="cancel()">Cancel</button>
+    <button *ngIf="option?.showNestedButton" (click)="toggleDropdown()">+</button>
+    <app-dropdown-item *ngIf="isOpen && option?.showNestedButton"
+                       [option]="option"
+                       [level]="level + 1"
+                       (selected)="handleNestedSelection($event)"></app-dropdown-item>
+  </div>
+  
